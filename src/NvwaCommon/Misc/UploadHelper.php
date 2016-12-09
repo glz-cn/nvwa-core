@@ -15,6 +15,27 @@ use Illuminate\Support\Facades\Log;
 class UploadHelper
 {
 
+    public static function snapshotLink($url, $width = null, $height = null, $q = 30)
+    {
+        $urlArray = explode(".", $url);
+        $last = array_pop($urlArray);
+        if (!is_null($width)) {
+            $target[] = "w_" . $width;
+        }
+        if (!is_null($height)) {
+            $target[] = "h_" . $height;
+        }
+        if ($q) {
+            $target[] = "q_" . $q;
+        }
+        $targetSection = join(",", $target);
+        if ($targetSection) {
+            return env("cdnDomain") . join(".", $urlArray) . "," . $targetSection . "." . $last;
+        } else {
+            return env("cdnDomain") . join(".", $urlArray) . "." . $last;
+        }
+    }
+
     public function upload(Request $request, $item, $subDirectory = '')
     {
 

@@ -1,0 +1,24 @@
+{
+  "name": "glz/nvwa-common",
+  "version": "1.0.4",
+  "description": "description_text",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "renlu",
+      "email": "xurenlu@glz8.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "snoopy/snoopy": ">=1.0",
+    "firebase/php-jwt": "^3.0",
+    "vlucas/phpdotenv": "~2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "NvwaCommon\\": "src/NvwaCommon/"
+    }
+  }
+}

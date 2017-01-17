@@ -41,25 +41,6 @@ class Signature
         $this->signItem = $signItem;
     }
 
-
-
-    /**
-     * @return string
-     */
-    public function getSecretKey()
-    {
-        return $this->secretKey;
-    }
-
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
-    {
-        $this->secretKey = $secretKey;
-    }
-
-
     /**
      * @param array $paramArray
      * @return array
@@ -88,7 +69,23 @@ class Signature
                 $sign .= $key . $val;
             }
         }
-        return strtoupper(hash_hmac("md5", $sign, $this->getSecretKey()));
+        return strtoupper(hash_hmac("sha256", $sign, $this->getSecretKey()));
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecretKey()
+    {
+        return $this->secretKey;
+    }
+
+    /**
+     * @param string $secretKey
+     */
+    public function setSecretKey($secretKey)
+    {
+        $this->secretKey = $secretKey;
     }
 
     /**

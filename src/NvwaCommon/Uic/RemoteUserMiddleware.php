@@ -10,7 +10,6 @@ namespace NvwaCommon\Uic;
 
 use Closure;
 use Firebase\JWT\JWT;
-use Firebase\JWT\SignatureInvalidException;
 use Illuminate\Http\Request;
 
 

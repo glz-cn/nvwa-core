@@ -74,7 +74,9 @@ class RemoteUserMiddleware
         $remoteUser->setId($remoteUserInfo->id);
         $remoteUser->setName($remoteUserInfo->name);
         $remoteUser->setEmail($remoteUserInfo->email);
-        $remoteUser->setRoleNames($remoteUserInfo->roleNames);
+        if (isset($remoteUserInfo->roleNames)) {
+            $remoteUser->setRoleNames($remoteUserInfo->roleNames);
+        }
         RemoteUser::setCurrentUser($remoteUser);
     }
 

@@ -28,6 +28,8 @@ class RemoteUser
      */
     public $name;
 
+    public $roleNames = [];
+
     /**
      * @return RemoteUser
      */
@@ -50,9 +52,17 @@ class RemoteUser
             } else {
                 $fakeUser->setEmail("steve.jobs@apple.com");
             }
+            $roleNameString = env("REMOTE_USER_FAKE_ROLES");
+            $roleNames = explode(",",$roleNameString);
+            $fakeUser->setRoleNames($roleNames);
             return $fakeUser;
         }
         return self::$currentUser;
+    }
+
+
+    public function hasRole($roleName){
+        return in_array($roleName, $this->getRoleNames());
     }
 
     /**
@@ -110,6 +120,24 @@ class RemoteUser
     {
         $this->name = $name;
     }
+
+    /**
+     * @return array
+     */
+    public function getRoleNames()
+    {
+        return $this->roleNames;
+    }
+
+    /**
+     * @param array $roleNames
+     */
+    public function setRoleNames($roleNames)
+    {
+        $this->roleNames = $roleNames;
+    }
+
+
 
 
 }

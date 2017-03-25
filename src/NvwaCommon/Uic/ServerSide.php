@@ -75,10 +75,15 @@ class ServerSide
     public  function getUicToken(Request $request,string $secret){
         $currentUser = $request->user();
         if($currentUser){
+            $roles = [];
+            foreach($currentUser->roles as $role){
+                $roles[] = $role->english_name;
+            }
             $remoteUser = new RemoteUser();
             $remoteUser->setId($currentUser->id);
             $remoteUser->setEmail($currentUser->email);
             $remoteUser->setName($currentUser->name);
+            $remoteUser->setRoleNames($roles);
             return JWT::encode($remoteUser,$secret);
         }else{
             return "";

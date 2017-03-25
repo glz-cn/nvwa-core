@@ -14,8 +14,7 @@
     "php": ">=5.5.9",
     "snoopy/snoopy": ">=1.0",
     "firebase/php-jwt": "^3.0",
-    "vlucas/phpdotenv": "~2.2",
-    "laravel/framework": "5.4.*"
+    "vlucas/phpdotenv": "~2.2"
   },
   "autoload": {
     "psr-4": {

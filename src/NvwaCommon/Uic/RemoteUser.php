@@ -30,6 +30,8 @@ class RemoteUser
 
     public $roleNames = [];
 
+
+    public $sid = "";
     /**
      * @return RemoteUser
      */
@@ -135,6 +137,22 @@ class RemoteUser
     public function setRoleNames($roleNames)
     {
         $this->roleNames = $roleNames;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSid()
+    {
+        return $this->sid;
+    }
+
+    /**
+     * @param string $sid
+     */
+    public function setSid($sid)
+    {
+        $this->sid = $sid;
     }
 
 

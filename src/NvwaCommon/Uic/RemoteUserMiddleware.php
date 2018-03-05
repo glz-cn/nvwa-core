@@ -73,6 +73,9 @@ class RemoteUserMiddleware
         $remoteUser->setId($remoteUserInfo->id);
         $remoteUser->setName($remoteUserInfo->name);
         $remoteUser->setEmail($remoteUserInfo->email);
+        if (isset($remoteUserInfo->sid)) {
+            $remoteUser->setSid($remoteUserInfo->sid);
+        }
         if (isset($remoteUserInfo->roleNames)) {
             $remoteUser->setRoleNames($remoteUserInfo->roleNames);
         }

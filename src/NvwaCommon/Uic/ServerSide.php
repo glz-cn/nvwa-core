@@ -76,8 +76,10 @@ class ServerSide
         $currentUser = $request->user();
         if($currentUser){
             $roles = [];
-            foreach($currentUser->roles as $role){
-                $roles[] = $role->english_name;
+            if ($currentUser->roles) {
+                foreach ($currentUser->roles as $role) {
+                    $roles[] = $role->english_name;
+                }
             }
             $remoteUser = new RemoteUser();
             $remoteUser->setId($currentUser->id);

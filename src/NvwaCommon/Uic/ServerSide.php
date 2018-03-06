@@ -86,7 +86,10 @@ class ServerSide
             $remoteUser->setEmail($currentUser->email);
             $remoteUser->setName($currentUser->name);
             $remoteUser->setRoleNames($roles);
-            $remoteUser->setSid($currentUser->sid);
+            if ($currentUser->site) {
+                $currentUser->sid = $currentUser->site->sid;
+                $remoteUser->setSid($currentUser->sid);
+            }
             return JWT::encode($remoteUser,$secret);
         }else{
             return "";

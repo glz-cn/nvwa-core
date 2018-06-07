@@ -45,7 +45,7 @@ class RemoteUserMiddleware
         }
         $uicToken = $request->input(ServerSide::$tokenArgumentName);
         if ($uicToken) {
-            $request->session()->set(self::$sessionName, $uicToken);
+            $request->session()->put(self::$sessionName, $uicToken);
         } else {
             $uicToken = $request->session()->get(self::$sessionName);
         }
